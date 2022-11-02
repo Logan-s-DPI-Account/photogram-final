@@ -78,8 +78,8 @@ Rails.application.routes.draw do
   # READ
   get("/likes", { :controller => "likes", :action => "index" })
   
-  get("/likes/:path_id", { :controller => "likes", :action => "show" })
-  
+  get("/users/:path_username/liked_photos", { :controller => "user_authentication", :action => "show" })
+  get("/users/:path_username/feed", { :controller => "user_authentication", :action => "feed"})
   # UPDATE
   
   post("/modify_like/:path_id", { :controller => "likes", :action => "update" })

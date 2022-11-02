@@ -19,11 +19,16 @@
     <ul>
       <li><a href="/users">All Users</a></li>
       <li><a href="/photos">All public photos</a></li>
+        <% if session.fetch(:user_id) == nil %>
       <li><a href="/user_sign_in">Sign in</a></li>
       <li><a href="/user_sign_up">Sign Up</a></li>
+        <% else #signed in %>
+      <li><a href="/users/<%=@current_user.username%>"><%= @current_user.username %></a>
       <li><a href="/user_sign_out">Sign out</a></li>
+      <% end %>
     </ul>
-
+    <p style ="color: green"><%= notice %></p>
+    <p style ="color: red"><%= alert %></p>
     </nav>
     <%= yield %>
   </body>

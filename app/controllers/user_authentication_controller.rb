@@ -101,5 +101,14 @@ class UserAuthenticationController < ApplicationController
     
     redirect_to("/", { :notice => "User account cancelled" })
   end
- 
+
+  def feed
+    url_username = params.fetch("path_username")
+
+    matching_usernames = User.where({ :username => url_username })
+    
+    @the_user = matching_usernames.at(0)
+    
+    render({ :template => "user_authentication/feed.html.erb"})
+  end
 end

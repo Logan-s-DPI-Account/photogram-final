@@ -17,4 +17,5 @@ class Photo < ApplicationRecord
     :foreign_key => "owner_id",
     :required => true
   })
+  has_many(:likes)
 end

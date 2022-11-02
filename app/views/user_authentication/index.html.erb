@@ -9,7 +9,7 @@
 <tr>
 <%@list_of_users.each do |user|%>
 <td><%= user.username%></td>
-<td><%= user.private?%></td>
+<td><%= user.private ? "yes" : "no" %></td>
 <td></td>
 <td><a href="/users/<%=user.username%>">show details</a></td>
 </tr>
