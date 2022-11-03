@@ -1,8 +1,8 @@
 <h1><%= @the_user.username %></h1>
 
 <dl>
-
-
+<% if @current_user.username == @url_username %>
+<%# <%= if @the_user.id = session.fetch(:user_id)%> 
 <dt>Edit user</dt>
 <dd>
 <form action="/user_update/<%=@the_user.id %>">
@@ -10,6 +10,7 @@
   <input id="updated_user_name" value="<%= @the_user.username %>" name="user_update">
 
   <button>Update user</button>
+<% end %>
 </form>
 </dd>
 </dl>

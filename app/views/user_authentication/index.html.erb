@@ -9,8 +9,19 @@
 <tr>
 <%@list_of_users.each do |user|%>
 <td><%= user.username%></td>
-<td><%= user.private ? "yes" : "no" %></td>
-<td></td>
+<td><%= user.private ? 'yes' : 'no' %></td>
+
+<td>
+<% if session[:user_id].present? %>
+<form action="/insert_follow_request", method="post">
+<input type="hidden" id="follow_requester" name="query_recipient_id" >
+<input type="hidden" id="follow_receiver" name="query_sender_id">
+<button>Follow</button><%end%></td>
+
+
+</form>
 <td><a href="/users/<%=user.username%>">show details</a></td>
 </tr>
+
 <%end%>
+</table>
