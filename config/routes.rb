@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   #INDEX
   get("/users", { :controller => "user_authentication", :action => "index"})
   #SHOW
-
+  #/users/:username/discover
+  get("/users/:path_username/discover", { :controller => "user_authentication", :action => "show"})
   get("/users/:path_username", { :controller => "user_authentication", :action => "show"})
   # SIGN UP FORM
   get("/user_sign_up", { :controller => "user_authentication", :action => "sign_up_form" })        
