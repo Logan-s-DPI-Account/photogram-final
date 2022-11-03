@@ -2,7 +2,7 @@
 
 <dl>
 <% if @current_user.username == @url_username %>
-<%# <%= if @the_user.id = session.fetch(:user_id)%> 
+
 <dt>Edit user</dt>
 <dd>
 <form action="/user_update/<%=@the_user.id %>">
