@@ -56,9 +56,9 @@ class PhotosController < ApplicationController
 
   def destroy
     the_id = params.fetch("path_id")
-    the_photo = Photo.where({ :id => the_id }).at(0)
+    @the_photo = Photo.where({ :id => the_id }).at(0)
 
-    the_photo.destroy
+    @the_photo.destroy
 
     redirect_to("/photos", { :notice => "Photo deleted successfully."} )
   end
