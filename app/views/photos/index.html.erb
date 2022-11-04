@@ -1,18 +1,18 @@
 <div>
   <div>
     <h1>
-      List of all photos
+      List of photos
     </h1>
   </div>
 </div>
 
-<hr>
-
 <div>
   <div>
   
-    <form action="/insert_photo" method="post">
-      <div>
+  <form action="/insert_photo" method="post" enctype="multipart/form-data" class="form-horizontal">
+  <label for="image">Image</label>
+  <input id="image" type="file" name="image" placeholder="Enter a URL for the image...">
+      
         <label for="caption_box">
           Caption
         </label>
@@ -20,21 +20,12 @@
         <textarea id="caption_box" name="query_caption" rows="3"></textarea>
       </div>
 
-      <%# <div>
-        <label for="comments_count_box">
-          Comments count
-        </label>
+    <button>
+        Add photo
+      </button>
+    </form>
 
-        <input type="text" id="comments_count_box" name="query_comments_count">
-      </div> %>
 
-      <div>
-        <label for="image_box">
-          Image
-        </label>
-
-        <input type="text" id="image_box" name="query_image">
-      </div>
 
       <%# <div>
         <label for="likes_count_box">
@@ -52,10 +43,7 @@
         <input type="text" id="owner_id_box" name="query_owner_id">
       </div> %>
 
-      <button>
-        Add photo
-      </button>
-    </form>
+      
   </div>
 </div>
 

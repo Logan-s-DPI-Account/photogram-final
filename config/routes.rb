@@ -37,11 +37,14 @@ Rails.application.routes.draw do
 
   # CREATE
   post("/insert_photo", { :controller => "photos", :action => "create" })
+  #trying to resolve errors with the route below this
+  # get("/insert_photo", { :controller => "photos", :action => "create"})
           
   # READ
   get("/photos", { :controller => "photos", :action => "index" })
   
   get("/photos/:path_id", { :controller => "photos", :action => "show" })
+  get("/uploads/photo/image/:path_id", { :controller => "photos", :action => "create"})
   
   # UPDATE
   

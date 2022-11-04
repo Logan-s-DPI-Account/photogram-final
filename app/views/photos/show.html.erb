@@ -1,7 +1,7 @@
 <div>
   <div>
     <h1>
-      Photo #<%= @the_photo.id %> details
+      Photo Details
     </h1>
 
     <div>
@@ -37,7 +37,7 @@
         Image
       </dt>
       <dd>
-        <img src="<%= @the_photo.image %>">
+        <img src="<%= @the_photo.image %>" class="img-responsive">
       </dd>
 
       <dt>
@@ -55,18 +55,12 @@
       </dd>
 
       <dt>
-        Created at
+        Posted
       </dt>
       <dd>
         <%= time_ago_in_words(@the_photo.created_at) %> ago
       </dd>
 
-      <dt>
-        Updated at
-      </dt>
-      <dd>
-        <%= time_ago_in_words(@the_photo.updated_at) %> ago
-      </dd>
     </dl>
   </div>
 </div>
@@ -80,7 +74,7 @@
       Edit photo
     </h2>
 
-    <form action="/modify_photo/<%= @the_photo.id %>"  method="post" >
+    <form action="/modify_photo/<%= @the_photo.id %>"  method="post" enctype="multipart/form-data"  >
       <div>
         <label for="caption_box">
           Caption
@@ -101,17 +95,11 @@
         <label for="image_box">
           Image
         </label>
-
-        <input type="text" id="image_box" name="query_image" value="<%= @the_photo.image %>">
+        <img src="<%= @the_photo.image %>" class="img-responsive" >
+        <input type="file" id="image_box" name="image" value="< @the_photo.image"> 
       </div>
 
-      <div>
-        <label for="likes_count_box">
-          Likes count
-        </label>
-
-        <input type="text" id="likes_count_box" name="query_likes_count" value="<%= @the_photo.likes_count %>">
-      </div>
+   
 
       <div>
         <label for="owner_id_box">
