@@ -112,9 +112,28 @@
       <button>
         Update photo
       </button>
+      </form>
       <a href="/delete_photo/<%= @the_photo.id %>">Delete this photo</a>
+      <table>
+        <tr>
+          <th>Commenter</th>
+          <th>Comment</th>
+          <th>Posted</th>
+        </tr>
+      <% @the_photo.comments.each do |the_comment|%>
+        <tr>
+        <td><%= the_comment.commenter.username %></td>
+        <td><%= the_comment.body %></td>
+        <td><%= time_ago_in_words(the_comment.created_at) %></td>
+        </tr>
+        <% end %>
+      </table>
+        <form action="/insert_comment" method="post">
+      <input type="text" value="<%=@the_photo.id %>" name="query_photo_id">
+      <label for ="browser_comment">Comment</label>
+      <textarea id="browser_comment" name="query_body" placeholder="Enter a comment..."></textarea>
+      <button>Add comment</button>
     </form>
   </div>
 </div>
-
-
+<%= @the_photo.comments %>

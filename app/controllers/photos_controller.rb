@@ -38,12 +38,12 @@ class PhotosController < ApplicationController
     the_id = params.fetch("path_id")
     
     @the_photo = Photo.where({ :id => the_id }).at(0)
-    @the_photo.image = params.fetch(:image)
+    # @the_photo.image = params.fetch(:image)
     @the_photo.caption = params.fetch("query_caption")
-    # @the_photo.comments_count = params.fetch("query_comments_count")
+    @the_photo.comments_count = params.fetch("query_comments_count")
    
  
-    # the_photo.likes_count = params.fetch("query_likes_count")
+    the_photo.likes_count = params.fetch("query_likes_count")
     @the_photo.owner_id = session.fetch(:user_id)
 
     if @the_photo.valid?

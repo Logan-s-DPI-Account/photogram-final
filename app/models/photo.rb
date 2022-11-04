@@ -17,7 +17,6 @@ class Photo < ApplicationRecord
   belongs_to(:poster, {
     :class_name => "User",
     :foreign_key => "owner_id",
-    :required => true
   })
   has_many(:likes, {
     :class_name => "Like",
@@ -27,6 +26,11 @@ class Photo < ApplicationRecord
     :through => :likes,
     :source => :fan
   })
+
+  has_many(:comments, { 
+    :class_name => "Comment", 
+    :foreign_key => "photo_id"
+    })
 
   def fan_list
     my_fans = self.fans
