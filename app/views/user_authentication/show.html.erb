@@ -1,10 +1,10 @@
 <h1><%= @the_user.username %></h1>
 
-<dl>
+
 <% if @current_user.username == @url_username %>
 
 <dt>Edit user</dt>
-<dd>
+
 <form action="/user_update/<%=@the_user.id %>">
   <label for="updated_user_name">Username</label>
   <input id="updated_user_name" value="<%= @the_user.username %>" name="user_update">
@@ -12,8 +12,17 @@
   <button>Update user</button>
 <% end %>
 </form>
-</dd>
+<dl>
+  <dt>Private</dt>
+  <% if @the_user.private && "false" %>
+    <dd>true</dd>
+  <% else %>
+    <dd>false</dd>
+  <dt>Followers</dt>
+    
 </dl>
+  <%end%>
+
 <nav>
   <ul>
     <li>
