@@ -21,7 +21,11 @@
 </form>
 <%end%>
 </td>
+<% if session[:user_id].present? %>
 <td><a href="/users/<%=user.username%>">show details</a></td>
+<%else%>
+<td><a href="/user_sign_up">show details</a></td>
+<% end %>
 </tr>
 
 <%end%>
