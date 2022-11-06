@@ -23,7 +23,7 @@ class User < ApplicationRecord
   })
   has_many(:accepted_sent_follow_requests, -> {where status:"accepted"},{
     :class_name => "FollowRequest",
-    :foreign_key => "sender_id",
+    :foreign_key => "recipient_id",
   })
   has_many(:sent_follow_requests, {
     :class_name => "FollowRequest",
