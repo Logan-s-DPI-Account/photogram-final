@@ -66,11 +66,16 @@
        <%end%>
        </dd>
     </dl>
-    <form action="/insert_like", method="post">
+    <% like=Like.where({ :photo_id => @the_photo.id }).where({ :fan_id => @current_user.id }).at(0) %>
+    <% if like != nil %>
+ <a href="/delete_like/<%=like.id %>">Unlike</a>
+    <% else %>
+       <form action="/insert_like", method="post">
     <input type="hidden" name="query_fan_id" value="<%=@current_user.id%>">
     <input type="hidden" name="query_photo_id" value="<%=@the_photo.id%>">
     <button>Like</button>
-   
+    
+<% end %>
   </div>
 </div>
 
