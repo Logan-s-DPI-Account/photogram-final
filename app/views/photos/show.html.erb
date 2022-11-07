@@ -30,7 +30,7 @@
         Comments count
       </dt>
       <dd>
-        <%= @the_photo.comments_count %>
+        <%= @the_photo.comments.count %>
       </dd>
 
       <dt>
@@ -44,7 +44,7 @@
         Likes count
       </dt>
       <dd>
-        <%= @the_photo.likes_count %>
+        <%= @the_photo.likes.count %>
       </dd>
 
       <dt>
@@ -60,8 +60,17 @@
       <dd>
         <%= time_ago_in_words(@the_photo.created_at) %> ago
       </dd>
-
+      <dt>Fans</dt>
+      <dd><% @the_photo.fans.each do |fan_list| %>
+      <%= fan_list.username %>
+       <%end%>
+       </dd>
     </dl>
+    <form action="/insert_like", method="post">
+    <input type="hidden" name="query_fan_id" value="<%=@current_user.id%>">
+    <input type="hidden" name="query_photo_id" value="<%=@the_photo.id%>">
+    <button>Like</button>
+   
   </div>
 </div>
 
@@ -136,4 +145,3 @@
     </form>
   </div>
 </div>
-
