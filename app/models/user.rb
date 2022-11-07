@@ -29,18 +29,23 @@ class User < ApplicationRecord
     :class_name => "FollowRequest",
     :foreign_key => "sender_id",
   })
-  has_many(:leaders, {
-    :through => :accepted_sent_follow_requests,
-    :source => :recipient
+  has_many(:accepted_received_follow_requests, -> {where status:"accepted"}, {
+    :class_name => "FollowRequest",
+    :foreign_key => "recipient_id"
   })
+ 
   
   has_many(:followers, {
     :through => :accepted_sent_follow_requests,
     :source => :sender
   })
-  has_many(:accepted_sent_follow_requests, {
-    :class_name => "FollowRequest",
-    :foreign_key => "sender_id"
+  # has_many(:accepted_sent_follow_requests, {
+  #   :class_name => "FollowRequest",
+  #   :foreign_key => "sender_id"
+  # })
+  has_many(:leaders, {
+    :through => :accepted_sent_follow_requests,
+    :source => :recipient
   })
   has_many(:own_photos, {
     :class_name => "Photo",

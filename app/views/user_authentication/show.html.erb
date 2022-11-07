@@ -19,8 +19,9 @@
   <% else %>
     <dd>false</dd>
   <dt>Followers</dt>
+  <dd><%= @the_user.accepted_received_follow_requests.count %></dd>
+  <dt>Following</dt>
   <dd><%= @the_user.accepted_sent_follow_requests.count %></dd>
-    
 </dl>
   <%end%>
 
