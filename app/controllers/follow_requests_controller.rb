@@ -27,6 +27,7 @@ the_follow_request.recipient_id = params.fetch("query_recipient_id")
 the_follow_request.status = "pending"
    
     if the_follow_request.valid?
+      
       the_follow_request.save
     
       redirect_to("/users/#{the_follow_request.recipient.username}", { :notice => "Follow request created successfully." })
@@ -57,6 +58,6 @@ the_follow_request.status = "pending"
 
     the_follow_request.destroy
 
-    redirect_to("/follow_requests", { :notice => "Follow request deleted successfully."} )
+    redirect_to("/users", { :notice => "Follow request deleted successfully."} )
   end
 end
