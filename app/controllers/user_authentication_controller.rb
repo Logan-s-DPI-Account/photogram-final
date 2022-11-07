@@ -16,6 +16,8 @@ class UserAuthenticationController < ApplicationController
     
     @the_user = matching_usernames.at(0)
 
+
+
     render({ :template => "user_authentication/show.html.erb"})
   end
   def sign_in_form

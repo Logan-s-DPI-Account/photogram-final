@@ -129,11 +129,11 @@
         <% end %>
       </table>
         <form action="/insert_comment" method="post">
-      <input type="text" value="<%=@the_photo.id %>" name="query_photo_id">
+      <input type="hidden" value="<%=@the_photo.id %>" name="query_photo_id">
       <label for ="browser_comment">Comment</label>
       <textarea id="browser_comment" name="query_body" placeholder="Enter a comment..."></textarea>
       <button>Add comment</button>
     </form>
   </div>
 </div>
-<%= @the_photo.comments %>
+

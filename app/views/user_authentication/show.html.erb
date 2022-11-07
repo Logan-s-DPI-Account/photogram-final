@@ -1,10 +1,18 @@
 <h1><%= @the_user.username %></h1>
 
 
-<% if @current_user.username == @url_username %>
+<% if @current_user.username == @the_user.username %>
+<h4>Pending follow requests</h4>
+  <ul>
+  <% @current_user.received_follow_requests.each do |the_request| %>
+  <% if the_request.status == "pending" %>
+    <li> <%= the_request.sender.username %></li>
+    
+  </ul>
+  <% end %>
+  <% end %>
 
 <dt>Edit user</dt>
-
 <form action="/user_update/<%=@the_user.id %>">
   <label for="updated_user_name">Username</label>
   <input id="updated_user_name" value="<%= @the_user.username %>" name="user_update">

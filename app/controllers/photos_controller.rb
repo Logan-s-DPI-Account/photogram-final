@@ -8,7 +8,10 @@ class PhotosController < ApplicationController
   end
 
   def show
+    
     the_id = params.fetch("path_id")
+
+   
 
     matching_photos = Photo.where({ :id => the_id })
 
