@@ -1,8 +1,8 @@
 class PhotosController < ApplicationController
   def index
+    # matching_photos = Photo.poster != 'private'
     matching_photos = Photo.all
-
-    @list_of_photos = matching_photos.order({ :created_at => :desc })
+    @list_of_photos = matching_photos.order({ :created_at => :asc })
 
     render({ :template => "photos/index.html.erb" })
   end

@@ -30,6 +30,7 @@
 </div>
 
 <hr>
+
 <div>
   <div>
     <table border="1">
@@ -67,8 +68,9 @@
         <th>
         </th>
       </tr>
-
+     
       <% @list_of_photos.each do |a_photo| %>
+       <% if a_photo.poster.private == false %>
       <tr>
  
         <td>
@@ -105,6 +107,7 @@
         </td>
       </tr>
       <% end %>
+      <%end%>
     </table>
   </div>
 </div>
