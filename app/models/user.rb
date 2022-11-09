@@ -21,9 +21,10 @@ class User < ApplicationRecord
     :class_name => "Photo",
     :foreign_key => "owner_id",
   })
+
   has_many(:accepted_sent_follow_requests, -> {where status:"accepted"},{
     :class_name => "FollowRequest",
-    :foreign_key => "recipient_id",
+    :foreign_key => "sender_id",
   })
   has_many(:sent_follow_requests, {
     :class_name => "FollowRequest",
@@ -35,7 +36,7 @@ class User < ApplicationRecord
   })
   has_many(:accepted_received_follow_requests, -> {where status:"accepted"}, {
     :class_name => "FollowRequest",
-    :foreign_key => "sender_id"
+    :foreign_key => "recipient_id"
   })
  
   
@@ -51,10 +52,6 @@ class User < ApplicationRecord
     :through => :accepted_sent_follow_requests,
     :source => :recipient
   })
-  has_many(:own_photos, {
-    :class_name => "Photo",
-    :foreign_key => "owner_id",
-    :dependent => :destroy
-  })
+
   has_many(:feed, { :through => :leaders, :source => :own_photos})
 end
