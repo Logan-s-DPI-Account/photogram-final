@@ -1,7 +1,8 @@
 class UserAuthenticationController < ApplicationController
   # Uncomment line 3 in this file and line 5 in ApplicationController if you want to force users to sign in before any other actions.
-  # skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :sign_in_form, :create_cookie] })
+  skip_before_action(:force_user_sign_in, { :only => [:sign_up_form, :create, :index, :sign_in_form, :create_cookie] })
   def index
+  
     matching_users = User.all
 
     @list_of_users = matching_users.order({ :username => :asc })
@@ -10,11 +11,14 @@ class UserAuthenticationController < ApplicationController
   end
 
   def show
+  
     @url_username = params.fetch("path_username")
 
     matching_usernames = User.where({ :username => @url_username })
     
     @the_user = matching_usernames.at(0)
+
+    
 
 
 

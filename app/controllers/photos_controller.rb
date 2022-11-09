@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
+  skip_before_action(:force_user_sign_in, { :only => [:index] })
   def index
-    # matching_photos = Photo.poster != 'private'
+  
     matching_photos = Photo.all
     @list_of_photos = matching_photos.order({ :created_at => :asc })
 
